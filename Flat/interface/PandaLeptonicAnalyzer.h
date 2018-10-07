@@ -128,6 +128,8 @@ private:
 	cTightElectronId,
 	cTrackingElectron,
 	cWWEWKCorr,
+	cEWKFactorNum,
+	cEWKFactorDen,
         cN
     };
 
@@ -221,8 +223,11 @@ private:
 */
     TH1D *hDDilPtMM;     TH1D *hDDilPtMM_PDF;	  TH1D *hDDilPtMM_QCD;	   TH1D *hDDilPtMM_QCDPart[6];
     TH1D *hDDilPtEE;	 TH1D *hDDilPtEE_PDF;	  TH1D *hDDilPtEE_QCD;	   TH1D *hDDilPtEE_QCDPart[6];
+    TH1D *hDDilHighPtIncMM; TH1D *hDDilHighPtIncMM_PDF; TH1D *hDDilHighPtIncMM_QCD; TH1D *hDDilHighPtIncMM_QCDPart[6];
+    TH1D *hDDilHighPtIncEE; TH1D *hDDilHighPtIncEE_PDF; TH1D *hDDilHighPtIncEE_QCD; TH1D *hDDilHighPtIncEE_QCDPart[6];
     TH1D *hDDilHighPtMM; TH1D *hDDilHighPtMM_PDF; TH1D *hDDilHighPtMM_QCD; TH1D *hDDilHighPtMM_QCDPart[6];
     TH1D *hDDilHighPtEE; TH1D *hDDilHighPtEE_PDF; TH1D *hDDilHighPtEE_QCD; TH1D *hDDilHighPtEE_QCDPart[6];
+    TH1D *hDDilHighPtNN; TH1D *hDDilHighPtNN_PDF; TH1D *hDDilHighPtNN_QCD; TH1D *hDDilHighPtNN_QCDPart[6];
     TH1D *hDDilRapMM;	 TH1D *hDDilRapMM_PDF;	  TH1D *hDDilRapMM_QCD;    TH1D *hDDilRapMM_QCDPart[6];
     TH1D *hDDilRapEE;	 TH1D *hDDilRapEE_PDF;	  TH1D *hDDilRapEE_QCD;	   TH1D *hDDilRapEE_QCDPart[6];
     TH1D *hDDilPhiStarMM;TH1D *hDDilPhiStarMM_PDF;TH1D *hDDilPhiStarMM_QCD;TH1D *hDDilPhiStarMM_QCDPart[6];
