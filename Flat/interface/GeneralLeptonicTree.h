@@ -238,6 +238,8 @@ class GeneralLeptonicTree : public genericTree {
     float loosePho1Eta = -1;
     float loosePho1Phi = -1;
     
+    float sf_l1Prefire = 1.0;
+    float sf_l1PrefireUnc = 1.0;
     float sf_pu = 1.0;
     float sf_puUp = 1.0;
     float sf_puDown = 1.0;

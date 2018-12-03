@@ -171,6 +171,8 @@ void GeneralLeptonicTree::Reset() {
     loosePho1Eta = -1;
     loosePho1Phi = -1;
    
+    sf_l1Prefire = 1.0;
+    sf_l1PrefireUnc = 1.0;
     sf_pu = 1.0;
     sf_puUp = 1.0;
     sf_puDown = 1.0;
@@ -330,6 +332,8 @@ void GeneralLeptonicTree::WriteTree(TTree *t) {
   Book("loosePho1Eta",&loosePho1Eta,"loosePho1Eta/F");
   Book("loosePho1Phi",&loosePho1Phi,"loosePho1Phi/F");
 
+  Book("sf_l1Prefire",&sf_l1Prefire,"sf_l1Prefire/F");
+  Book("sf_l1PrefireUnc",&sf_l1PrefireUnc,"sf_l1PrefireUnc/F");
   Book("sf_pu",&sf_pu,"sf_pu/F");
   Book("sf_puUp",&sf_puUp,"sf_puUp/F");
   Book("sf_puDown",&sf_puDown,"sf_puDown/F");

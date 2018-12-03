@@ -128,8 +128,11 @@ private:
 	cTightElectronId,
 	cTrackingElectron,
 	cWWEWKCorr,
+	cWWQCDCorr,
 	cEWKFactorNum,
 	cEWKFactorDen,
+        cL1PreFiring,
+        cL1PhotonPreFiring,
         cN
     };
 
@@ -165,7 +168,11 @@ private:
     const int nBinPtRap3 = 34;
     const int nBinPtRap4 = 34;
     const int nBinWWSS = 5;
-    const int nBinWW = 9;
+    const int nBinWWMLL = 14;
+    const int nBinWWDPHILL = 9;
+    const int nBinWWPTL1 = 14;
+    const int nBinWWPTL2 = 9;
+    const int nBinWWPTLL = 15;
     const int nBinWWN0JET = 3;
     bool PassGoodLumis(int run, int lumi);
     bool PassPreselection();
@@ -184,7 +191,7 @@ private:
     std::map<panda::GenParticle const*,float> genObjects;                 //!< particles we want to match the jets to, and the 'size' of the daughters
     panda::GenParticle const* MatchToGen(double eta, double phi, double r2, int pdgid=0);        //!< private function to match a jet; returns NULL if not found
     std::map<int,std::vector<LumiRange>> goodLumis;
-    std::vector<panda::Particle*> matchPhos, matchEles, matchLeps;
+    std::vector<panda::Particle*> matchVeryLoosePhos, matchPhos, matchEles, matchLeps;
     
     // CMSSW-provided utilities
 
@@ -228,6 +235,9 @@ private:
     TH1D *hDDilHighPtMM; TH1D *hDDilHighPtMM_PDF; TH1D *hDDilHighPtMM_QCD; TH1D *hDDilHighPtMM_QCDPart[6];
     TH1D *hDDilHighPtEE; TH1D *hDDilHighPtEE_PDF; TH1D *hDDilHighPtEE_QCD; TH1D *hDDilHighPtEE_QCDPart[6];
     TH1D *hDDilHighPtNN; TH1D *hDDilHighPtNN_PDF; TH1D *hDDilHighPtNN_QCD; TH1D *hDDilHighPtNN_QCDPart[6];
+    TH1D *hDDilHighPtNoEWKMM;
+    TH1D *hDDilHighPtNoEWKEE;
+    TH1D *hDDilHighPtNoEWKNN;
     TH1D *hDDilRapMM;	 TH1D *hDDilRapMM_PDF;	  TH1D *hDDilRapMM_QCD;    TH1D *hDDilRapMM_QCDPart[6];
     TH1D *hDDilRapEE;	 TH1D *hDDilRapEE_PDF;	  TH1D *hDDilRapEE_QCD;	   TH1D *hDDilRapEE_QCDPart[6];
     TH1D *hDDilPhiStarMM;TH1D *hDDilPhiStarMM_PDF;TH1D *hDDilPhiStarMM_QCD;TH1D *hDDilPhiStarMM_QCDPart[6];
@@ -244,10 +254,17 @@ private:
     TH1D *hDDilPtRap4EE; TH1D *hDDilPtRap4EE_PDF; TH1D *hDDilPtRap4EE_QCD; TH1D *hDDilPtRap4EE_QCDPart[6];
     TH1D *hDWWSSMLL;
     TH1D *hDWWEWKNorm;
+    TH1D *hDWWQCDNorm;
     TH1D *hDWWMLL;       TH1D *hDWWMLL_PDF;	  TH1D *hDWWMLL_QCD;	   TH1D *hDWWMLL_QCDPart[6];
+    TH1D *hDWWDPHILL;    TH1D *hDWWDPHILL_PDF;	  TH1D *hDWWDPHILL_QCD;	   TH1D *hDWWDPHILL_QCDPart[6];
     TH1D *hDWWPTL1;      TH1D *hDWWPTL1_PDF;	  TH1D *hDWWPTL1_QCD;	   TH1D *hDWWPTL1_QCDPart[6];
     TH1D *hDWWPTL2;      TH1D *hDWWPTL2_PDF;	  TH1D *hDWWPTL2_QCD;	   TH1D *hDWWPTL2_QCDPart[6];
-    TH1D *hDWWDPHILL;    TH1D *hDWWDPHILL_PDF;	  TH1D *hDWWDPHILL_QCD;	   TH1D *hDWWDPHILL_QCDPart[6];
+    TH1D *hDWWPTLL;      TH1D *hDWWPTLL_PDF;	  TH1D *hDWWPTLL_QCD;	   TH1D *hDWWPTLL_QCDPart[6];
+    TH1D *hDWWMLL0JET;   TH1D *hDWWMLL0JET_PDF;   TH1D *hDWWMLL0JET_QCD;   TH1D *hDWWMLL0JET_QCDPart[6];
+    TH1D *hDWWDPHILL0JET;TH1D *hDWWDPHILL0JET_PDF;TH1D *hDWWDPHILL0JET_QCD;TH1D *hDWWDPHILL0JET_QCDPart[6];
+    TH1D *hDWWPTL10JET;  TH1D *hDWWPTL10JET_PDF;  TH1D *hDWWPTL10JET_QCD;  TH1D *hDWWPTL10JET_QCDPart[6];
+    TH1D *hDWWPTL20JET;  TH1D *hDWWPTL20JET_PDF;  TH1D *hDWWPTL20JET_QCD;  TH1D *hDWWPTL20JET_QCDPart[6];
+    TH1D *hDWWPTLL0JET;  TH1D *hDWWPTLL0JET_PDF;  TH1D *hDWWPTLL0JET_QCD;  TH1D *hDWWPTLL0JET_QCDPart[6];
     TH1D *hDWWN0JET;     TH1D *hDWWN0JET_PDF;	  TH1D *hDWWN0JET_QCD;	   TH1D *hDWWN0JET_QCDPart[6];
     TH1D *hDWWNJET;      TH1D *hDWWNJET_PDF;	  TH1D *hDWWNJET_QCD;	   TH1D *hDWWNJET_QCDPart[6];
     TTree *tIn=0;    // input tree to read
