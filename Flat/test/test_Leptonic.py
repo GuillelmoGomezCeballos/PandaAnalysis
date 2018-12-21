@@ -23,7 +23,7 @@ Load('PandaLeptonicAnalyzer')
 skimmer = root.PandaLeptonicAnalyzer(debug_level)
 
 skimmer.firstEvent=0
-skimmer.lastEvent=20000
+skimmer.lastEvent=-1
 skimmer.isData=False
 skimmer.SetFlag('firstGen',True)
 skimmer.SetFlag('applyEGCorr',False)
@@ -43,16 +43,20 @@ skimmer.SetPreselectionBit(root.PandaLeptonicAnalyzer.kLepton)
 #fin = root.TFile.Open('input.root')
 fin = root.TFile.Open(torun)
 
-tree = fin.FindObjectAny("events")
-hweights = fin.FindObjectAny("hSumW")
-weights = fin.FindObjectAny('weights')
-if not weights:
-    weights = None
-print tree, hweights, weights
+if fin and not(fin.IsZombie()):
+    tree = fin.FindObjectAny("events")
+    hweights = fin.FindObjectAny("hSumW")
+    weights = fin.FindObjectAny('weights')
+    if not weights:
+        weights = None
+    print tree, hweights, weights
 
-skimmer.SetDataDir(getenv('CMSSW_BASE')+'/src/PandaAnalysis/data/')
-skimmer.Init(tree,hweights,weights)
-skimmer.SetOutputFile(output)
+    skimmer.SetDataDir(getenv('CMSSW_BASE')+'/src/PandaAnalysis/data/')
+    skimmer.Init(tree,hweights,weights)
+    skimmer.SetOutputFile(output)
 
-skimmer.Run()
-skimmer.Terminate()
+    skimmer.Run()
+    skimmer.Terminate()
+
+else:
+    print 'CORRUPTED FILE: ',torun

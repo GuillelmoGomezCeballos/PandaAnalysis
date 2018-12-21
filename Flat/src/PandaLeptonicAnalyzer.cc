@@ -314,12 +314,12 @@ int PandaLeptonicAnalyzer::Init(TTree *t, TH1D *hweights, TTree *weightNames)
   for(int i=0; i<6; i++) hDWWNJET_QCDPart[i] = new TH1D(Form("hDWWNJET_QCD_%d",i) ,Form("hDWWNJET_QCD_%d",i), nBinWWN0JET, xbinsWWN0JET);
 
   if (weightNames) {
-    if (weightNames->GetEntries()!=377 && weightNames->GetEntries()!=22) {
-      PError("PandaLeptonicAnalyzer::Init",
-          TString::Format("Reweighting failed because only found %u weights!",
-                          unsigned(weightNames->GetEntries())));
-      return 1;
-    }
+    //if (weightNames->GetEntries()!=377 && weightNames->GetEntries()!=22) {
+    //  PError("PandaLeptonicAnalyzer::Init",
+    //      TString::Format("Reweighting failed because only found %u weights!",
+    //                      unsigned(weightNames->GetEntries())));
+    //  return 1;
+    //}
     TString *id = new TString();
     weightNames->SetBranchAddress("id",&id);
     unsigned nW = weightNames->GetEntriesFast();
@@ -2304,6 +2304,12 @@ void PandaLeptonicAnalyzer::Run() {
         for (unsigned iW=0; iW!=nW; ++iW) {
           gt->signal_weights[wIDs[iW]] = event.genReweight.genParam[iW];
         }
+	gt->scale[0] = event.genReweight.genParam[ 1] / event.genReweight.genParam[0] - 1.0; // r1f2DW
+	gt->scale[1] = event.genReweight.genParam[ 3] / event.genReweight.genParam[0] - 1.0; // r1f5DW
+	gt->scale[2] = event.genReweight.genParam[ 4] / event.genReweight.genParam[0] - 1.0; // r2f1DW
+	gt->scale[3] = event.genReweight.genParam[ 5] / event.genReweight.genParam[0] - 1.0; // r2f2DW
+	gt->scale[4] = event.genReweight.genParam[12] / event.genReweight.genParam[0] - 1.0; // r5f1DW
+	gt->scale[5] = event.genReweight.genParam[15] / event.genReweight.genParam[0] - 1.0; // r5f5DW
       }
     }
 
