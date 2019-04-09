@@ -36,37 +36,67 @@ void TriggerOp::do_init(Registry& registry)
   vector<TString> paths; 
   if (analysis.isData || analysis.mcTriggers) {
     // MET
-    if (analysis.year == 2016) {
+    if (!analysis.hbb && analysis.complicatedLeptons && analysis.mcTriggers) {
       paths = {
-            "HLT_PFMET170_NoiseCleaned",
-            "HLT_PFMET170_HBHECleaned",
-            "HLT_PFMET170_JetIdCleaned",
-            "HLT_PFMET170_NotCleaned",
-            "HLT_PFMET170_HBHE_BeamHaloCleaned",
-            "HLT_PFMETNoMu120_NoiseCleaned_PFMHTNoMu120_IDTight",
-            "HLT_PFMETNoMu110_NoiseCleaned_PFMHTNoMu110_IDTight",
-            "HLT_PFMETNoMu90_NoiseCleaned_PFMHTNoMu90_IDTight",
             "HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
             "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight",
             "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
-            "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight"
+            "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
+            "HLT_PFMETNoMu130_PFMHTNoMu130_IDTight",
+            "HLT_PFMETNoMu140_PFMHTNoMu140_IDTight",
+            "HLT_MonoCentralPFJet80_PFMETNoMu90_PFMHTNoMu90_IDTight",
+            "HLT_MonoCentralPFJet80_PFMETNoMu100_PFMHTNoMu100_IDTight",
+            "HLT_MonoCentralPFJet80_PFMETNoMu110_PFMHTNoMu110_IDTight",
+            "HLT_MonoCentralPFJet80_PFMETNoMu120_PFMHTNoMu120_IDTight",
+            "HLT_MonoCentralPFJet80_PFMETNoMu130_PFMHTNoMu130_IDTight",
+            "HLT_MonoCentralPFJet80_PFMETNoMu140_PFMHTNoMu140_IDTight",
+            "HLT_CaloMET70_HBHECleaned",
+            "HLT_CaloMET80_HBHECleaned",
+            "HLT_CaloMET90_HBHECleaned",
+            "HLT_CaloMET100_HBHECleaned"
+            "HLT_CaloMET250_HBHECleaned"
+            "HLT_CaloMET300_HBHECleaned"
+            "HLT_CaloMET350_HBHECleaned"
+            "HLT_CaloMET80_NotCleaned",
+            "HLT_CaloMET90_NotCleaned",
+            "HLT_CaloMET100_NotCleaned",
+            "HLT_CaloMET110_NotCleaned",
+            "HLT_CaloMET250_NotCleaned"
       };
-    } else if (analysis.year == 2017) { 
-        paths = {
-          "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
-          "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
-          "HLT_PFMETNoMu130_PFMHTNoMu130_IDTight",
-          "HLT_PFMETNoMu140_PFMHTNoMu140_IDTight",
-        };
-    } else if (analysis.year == 2018) { 
-        paths = {
-          "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight_PFHT60",
-          "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
-          "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
-          "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
-          "HLT_PFMETNoMu130_PFMHTNoMu130_IDTight",
-          "HLT_PFMETNoMu140_PFMHTNoMu140_IDTight",
-        };
+    }
+    else {
+      if (analysis.year == 2016) {
+	paths = {
+              "HLT_PFMET170_NoiseCleaned",
+              "HLT_PFMET170_HBHECleaned",
+              "HLT_PFMET170_JetIdCleaned",
+              "HLT_PFMET170_NotCleaned",
+              "HLT_PFMET170_HBHE_BeamHaloCleaned",
+              "HLT_PFMETNoMu120_NoiseCleaned_PFMHTNoMu120_IDTight",
+              "HLT_PFMETNoMu110_NoiseCleaned_PFMHTNoMu110_IDTight",
+              "HLT_PFMETNoMu90_NoiseCleaned_PFMHTNoMu90_IDTight",
+              "HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
+              "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight",
+              "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
+              "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight"
+	};
+      } else if (analysis.year == 2017) { 
+          paths = {
+            "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
+            "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
+            "HLT_PFMETNoMu130_PFMHTNoMu130_IDTight",
+            "HLT_PFMETNoMu140_PFMHTNoMu140_IDTight",
+          };
+      } else if (analysis.year == 2018) { 
+          paths = {
+            "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight_PFHT60",
+            "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
+            "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
+            "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
+            "HLT_PFMETNoMu130_PFMHTNoMu130_IDTight",
+            "HLT_PFMETNoMu140_PFMHTNoMu140_IDTight",
+          };
+      }
     }
     triggerHandlers[kMETTrig].addTriggers(paths);
 
