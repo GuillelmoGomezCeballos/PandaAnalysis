@@ -38,6 +38,8 @@ void TriggerOp::do_init(Registry& registry)
     // MET
     if (!analysis.hbb && analysis.complicatedLeptons && analysis.mcTriggers) {
       paths = {
+            "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight_PFHT60",
+	    "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
             "HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
             "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight",
             "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
