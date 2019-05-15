@@ -51,6 +51,8 @@ d = {
                                        'WGstarToLNuMuMu_012Jets_13TeV-madgraph'],
     'VG'                            : ['WGToLNuG_TuneCUETP8M1_13TeV-madgraphMLM-pythia8',
                                        'ZGTo2LG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8'],
+    'VG_M120'                       : ['LLAJJ_EWK_MLL-50_MJJ-120_13TeV-madgraph-pythia8',
+                                       'LNuAJJ_EWK_MJJ-120_13TeV-madgraph-pythia8'],
     'H125'                          : ['GluGluHToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8',
                                        'VBF_HToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8',
                                        'GluGluHToWWTo2L2Nu_M125_13TeV_powheg_JHUgen_pythia8',
