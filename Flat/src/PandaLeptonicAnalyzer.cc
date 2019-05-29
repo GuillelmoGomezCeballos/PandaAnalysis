@@ -175,8 +175,8 @@ int PandaLeptonicAnalyzer::Init(TTree *t, TH1D *hweights, TTree *weightNames)
   for(int i=0; i<=nBinWWPTWW; i++) xbinsWWPTWW[i]= i*5;
 
   Float_t xbinsWWN0JET[nBinWWN0JET+1];
-    xbinsWWN0JET[ 0] =-0.5;      xbinsWWN0JET[ 1] = 0.5;      xbinsWWN0JET[ 2] = 1.5;      xbinsWWN0JET[ 3] = 2.5;      
-    xbinsWWN0JET[ 4] = 3.5;      xbinsWWN0JET[ 5] = 4.5;
+    xbinsWWN0JET[ 0] =-0.5;      xbinsWWN0JET[ 1] = 0.5;      xbinsWWN0JET[ 2] = 1.5;
+    xbinsWWN0JET[ 3] = 2.5;      xbinsWWN0JET[ 4] = 3.5;      xbinsWWN0JET[ 5] = 4.5;
 
   hDDilPtMM = new TH1D("hDDilPtMM", "hDDilPtMM", nBinPt, xbinsPt);
   hDDilPtEE = new TH1D("hDDilPtEE", "hDDilPtEE", nBinPt, xbinsPt);
