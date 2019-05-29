@@ -157,6 +157,8 @@ private:
             double eff, sf, sfup, sfdown;
     };
 
+    const int nBinZHGEta = 5;
+    const int nBinZHGPt = 7;
     const int nBinEta = 28;
     const int nBinPt = 36;
     const int nBinHighPt = 5;
@@ -168,12 +170,13 @@ private:
     const int nBinPtRap3 = 34;
     const int nBinPtRap4 = 34;
     const int nBinWWSS = 5;
-    const int nBinWWMLL = 14;
+    const int nBinWWMLL = 13;
     const int nBinWWDPHILL = 9;
     const int nBinWWPTL1 = 14;
-    const int nBinWWPTL2 = 9;
+    const int nBinWWPTL2 = 8;
     const int nBinWWPTLL = 15;
-    const int nBinWWN0JET = 3;
+    const int nBinWWPTWW = 100;
+    const int nBinWWN0JET = 5;
     bool PassGoodLumis(int run, int lumi);
     bool PassPreselection();
     void CalcBJetSFs(BTagType bt, int flavor, double eta, double pt, 
@@ -228,6 +231,8 @@ private:
     TH1D *hDRecoTrackIso_F[28];
     TH1D *hDGenToMuon[8];
 */
+    TH2D *hDNumMuEtaPt;     TH2D *hDNumElEtaPt;	  TH2D *hDNumPhEtaPt;
+    TH2D *hDDenMuEtaPt;     TH2D *hDDenElEtaPt;	  TH2D *hDDenPhEtaPt;
     TH1D *hDDilPtMM;     TH1D *hDDilPtMM_PDF;	  TH1D *hDDilPtMM_QCD;	   TH1D *hDDilPtMM_QCDPart[6];
     TH1D *hDDilPtEE;	 TH1D *hDDilPtEE_PDF;	  TH1D *hDDilPtEE_QCD;	   TH1D *hDDilPtEE_QCDPart[6];
     TH1D *hDDilHighPtIncMM; TH1D *hDDilHighPtIncMM_PDF; TH1D *hDDilHighPtIncMM_QCD; TH1D *hDDilHighPtIncMM_QCDPart[6];
@@ -260,6 +265,7 @@ private:
     TH1D *hDWWPTL1;      TH1D *hDWWPTL1_PDF;	  TH1D *hDWWPTL1_QCD;	   TH1D *hDWWPTL1_QCDPart[6];
     TH1D *hDWWPTL2;      TH1D *hDWWPTL2_PDF;	  TH1D *hDWWPTL2_QCD;	   TH1D *hDWWPTL2_QCDPart[6];
     TH1D *hDWWPTLL;      TH1D *hDWWPTLL_PDF;	  TH1D *hDWWPTLL_QCD;	   TH1D *hDWWPTLL_QCDPart[6];
+    TH1D *hDWWPTWW;
     TH1D *hDWWMLL0JET;   TH1D *hDWWMLL0JET_PDF;   TH1D *hDWWMLL0JET_QCD;   TH1D *hDWWMLL0JET_QCDPart[6];
     TH1D *hDWWDPHILL0JET;TH1D *hDWWDPHILL0JET_PDF;TH1D *hDWWDPHILL0JET_QCD;TH1D *hDWWDPHILL0JET_QCDPart[6];
     TH1D *hDWWPTL10JET;  TH1D *hDWWPTL10JET_PDF;  TH1D *hDWWPTL10JET_QCD;  TH1D *hDWWPTL10JET_QCDPart[6];
