@@ -23,7 +23,7 @@ Load('PandaLeptonicAnalyzer')
 skimmer = root.PandaLeptonicAnalyzer(debug_level)
 
 skimmer.firstEvent=0
-skimmer.lastEvent=-1
+skimmer.lastEvent=10000
 skimmer.isData=False
 skimmer.SetFlag('firstGen',True)
 skimmer.SetFlag('applyEGCorr',False)
