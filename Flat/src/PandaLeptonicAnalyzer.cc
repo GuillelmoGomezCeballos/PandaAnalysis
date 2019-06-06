@@ -2514,11 +2514,11 @@ void PandaLeptonicAnalyzer::Run() {
         for (unsigned iW=0; iW!=nW; ++iW) {
           gt->signal_weights[wIDs[iW]] = event.genReweight.genParam[iW];
         }
-        gt->scale[0] = event.genReweight.genParam[ 1] / event.genReweight.genParam[0] - 1.0; // r1f2DW
-        gt->scale[1] = event.genReweight.genParam[ 4] / event.genReweight.genParam[0] - 1.0; // r1f5DW
-        gt->scale[2] = event.genReweight.genParam[ 5] / event.genReweight.genParam[0] - 1.0; // r2f1DW
+        gt->scale[0] = 0;//event.genReweight.genParam[ 1] / event.genReweight.genParam[0] - 1.0; // r1f2DW
+        gt->scale[1] = 0;//event.genReweight.genParam[ 4] / event.genReweight.genParam[0] - 1.0; // r1f5DW
+        gt->scale[2] = 0;//event.genReweight.genParam[ 5] / event.genReweight.genParam[0] - 1.0; // r2f1DW
         gt->scale[3] = event.genReweight.genParam[ 6] / event.genReweight.genParam[0] - 1.0; // r2f2DW
-        gt->scale[4] = event.genReweight.genParam[20] / event.genReweight.genParam[0] - 1.0; // r5f1DW
+        gt->scale[4] = 0;//event.genReweight.genParam[20] / event.genReweight.genParam[0] - 1.0; // r5f1DW
         gt->scale[5] = event.genReweight.genParam[24] / event.genReweight.genParam[0] - 1.0; // r5f5DW
       }
     }
