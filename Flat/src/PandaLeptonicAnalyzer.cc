@@ -2576,22 +2576,35 @@ void PandaLeptonicAnalyzer::Run() {
       //printf("kZPtCut %d %f\n",nPartonLeptons,thePartonZ.Pt());
       if(processType == kZPtCut && nPartonLeptons == 2 && thePartonZ.Pt() > 100) continue;
 
+      const bool useDressedLeptons = true; const double minGenPhotonPt = 0.0; const double maxDR2GenRecLep = 0.1*0.1; 
       std::vector<int> targetsLepton;
       std::vector<int> targetsV;
       std::vector<int> targetsPhoton;
       std::vector<int> targetsTop;
       std::vector<int> targetsN;
-      int nGen = event.genParticles.size();
+      int nGen = event.genParticles.size();/*printf("SSSSSS\n");*/
       for (int iG=0; iG!=nGen; ++iG) {
         auto& part(event.genParticles.at(iG));
         int pdgid = part.pdgid;
         unsigned int abspdgid = abs(pdgid);
-        if ((abspdgid == 11 || abspdgid == 13) && part.finalState &&
-	    (part.testFlag(GenParticle::kIsPrompt) || part.statusFlags == GenParticle::kIsPrompt ||
-	     part.testFlag(GenParticle::kIsTauDecayProduct) || part.testFlag(GenParticle::kIsPromptTauDecayProduct) || 
-	     part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
-	     (part.parent.isValid() && abs(part.parent->pdgid) == 15)))
-          targetsLepton.push_back(iG);
+	if(useDressedLeptons == true){
+          if ((abspdgid == 11 || abspdgid == 13) && part.finalState &&
+	      (part.testFlag(GenParticle::kIsPrompt) || part.statusFlags == GenParticle::kIsPrompt ||
+	       part.testFlag(GenParticle::kIsTauDecayProduct) || part.testFlag(GenParticle::kIsPromptTauDecayProduct) || 
+	       part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
+	       (part.parent.isValid() && abs(part.parent->pdgid) == 15)))
+            targetsLepton.push_back(iG);
+        }
+	else {
+          if ((abspdgid == 11 || abspdgid == 13) && part.testFlag(GenParticle::kIsHardProcess))
+            targetsLepton.push_back(iG);
+	  /*if ((abspdgid == 11 || abspdgid == 13)) printf("%4d %7.1f %3d | %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n",part.pdgid,part.pt(),part.finalState,
+	  part.testFlag(GenParticle::kIsPrompt),part.testFlag(GenParticle::kIsDecayedLeptonHadron),part.testFlag(GenParticle::kIsTauDecayProduct),
+	  part.testFlag(GenParticle::kIsPromptTauDecayProduct),part.testFlag(GenParticle::kIsDirectTauDecayProduct),part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct),
+	  part.testFlag(GenParticle::kIsDirectHadronDecayProduct),part.testFlag(GenParticle::kIsHardProcess),part.testFlag(GenParticle::kFromHardProcess),
+	  part.testFlag(GenParticle::kIsHardProcessTauDecayProduct),part.testFlag(GenParticle::kIsDirectHardProcessTauDecayProduct),part.testFlag(GenParticle::kFromHardProcessBeforeFSR),
+	  part.testFlag(GenParticle::kIsFirstCopy),part.testFlag(GenParticle::kIsLastCopy),part.testFlag(GenParticle::kIsLastCopyBeforeFSR));*/
+	}
 
         if (abspdgid == 22 && part.finalState)
           targetsPhoton.push_back(iG);
@@ -2681,24 +2694,28 @@ void PandaLeptonicAnalyzer::Run() {
 
         if(part.pdgid == 13 || part.pdgid == 11) lepNegGen = dressedLepton;
 
-        for (int jG : targetsPhoton) {
-          auto& partj(event.genParticles.at(jG));
+        if(useDressedLeptons == true){
+          for (int jG : targetsPhoton) {
+            auto& partj(event.genParticles.at(jG));
 
-//           // check there is no further copy:
-//           bool isLastCopy=true;
-//           for (int kG : targetsPhoton) {
-//             if (event.genParticles.at(kG).parent.isValid() && event.genParticles.at(kG).parent.get() == &part) {
-//               isLastCopy=false;
-//               break;
-//             }
-//           }
-//           if (!isLastCopy)
-//             continue;
+//	     // check there is no further copy:
+//	     bool isLastCopy=true;
+//	     for (int kG : targetsPhoton) {
+//	       if (event.genParticles.at(kG).parent.isValid() && event.genParticles.at(kG).parent.get() == &part) {
+//		 isLastCopy=false;
+//		 break;
+//	       }
+//	     }
+//	     if (!isLastCopy)
+//	       continue;
 
-	  if(abs(partj.pdgid) == 22 && DeltaR2(part.eta(),part.phi(),partj.eta(),partj.phi()) < 0.01) {
-            TLorentzVector photonV;
-            photonV.SetPtEtaPhiM(partj.pt(),partj.eta(),partj.phi(),partj.m());
-	    dressedLepton += photonV;
+            if(partj.pt() <= minGenPhotonPt) continue;
+
+	    if(abs(partj.pdgid) == 22 && DeltaR2(part.eta(),part.phi(),partj.eta(),partj.phi()) < 0.01) {
+              TLorentzVector photonV;
+              photonV.SetPtEtaPhiM(partj.pt(),partj.eta(),partj.phi(),partj.m());
+	      dressedLepton += photonV;
+	    }
 	  }
 	}
 /*
@@ -2754,35 +2771,39 @@ void PandaLeptonicAnalyzer::Run() {
           gt->genLep2PdgId = thePdgId; 
         }
  
-        if(v1.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v1.Eta(),v1.Phi()) < 0.01) {
+        if(v1.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v1.Eta(),v1.Phi()) < maxDR2GenRecLep) {
 	  if     (part.testFlag(GenParticle::kIsTauDecayProduct) || part.testFlag(GenParticle::kIsPromptTauDecayProduct) || 
 	          part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
 		  (part.parent.isValid() && abs(part.parent->pdgid) == 15)) gt->looseGenLep1PdgId = 2;
 	  else if(part.testFlag(GenParticle::kIsPrompt) || part.statusFlags == GenParticle::kIsPrompt) gt->looseGenLep1PdgId = 1;
+	  else gt->looseGenLep1PdgId = 3;
 	  if(part.pdgid != gt->looseLep1PdgId) gt->looseGenLep1PdgId = -1 * gt->looseGenLep1PdgId;
 	}
 
-        if(v2.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v2.Eta(),v2.Phi()) < 0.01) {
+        if(v2.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v2.Eta(),v2.Phi()) < maxDR2GenRecLep) {
 	  if     (part.testFlag(GenParticle::kIsTauDecayProduct) || part.testFlag(GenParticle::kIsPromptTauDecayProduct) || 
 	          part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
 		  (part.parent.isValid() && abs(part.parent->pdgid) == 15)) gt->looseGenLep2PdgId = 2;
 	  else if(part.testFlag(GenParticle::kIsPrompt) || part.statusFlags == GenParticle::kIsPrompt) gt->looseGenLep2PdgId = 1;
+	  else gt->looseGenLep2PdgId = 3;
 	  if(part.pdgid != gt->looseLep2PdgId) gt->looseGenLep2PdgId = -1 * gt->looseGenLep2PdgId;
 	}
 
-        if(v3.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v3.Eta(),v3.Phi()) < 0.01) {
+        if(v3.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v3.Eta(),v3.Phi()) < maxDR2GenRecLep) {
 	  if     (part.testFlag(GenParticle::kIsTauDecayProduct) || part.testFlag(GenParticle::kIsPromptTauDecayProduct) || 
 	          part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
 		  (part.parent.isValid() && abs(part.parent->pdgid) == 15)) gt->looseGenLep3PdgId = 2;
 	  else if(part.testFlag(GenParticle::kIsPrompt) || part.statusFlags == GenParticle::kIsPrompt) gt->looseGenLep3PdgId = 1;
+	  else gt->looseGenLep3PdgId = 3;
 	  if(part.pdgid != gt->looseLep3PdgId) gt->looseGenLep3PdgId = -1 * gt->looseGenLep3PdgId;
 	}
 
-        if(v4.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v4.Eta(),v4.Phi()) < 0.01) {
+        if(v4.Pt() > 0 && DeltaR2(part.eta(),part.phi(),v4.Eta(),v4.Phi()) < maxDR2GenRecLep) {
 	  if     (part.testFlag(GenParticle::kIsTauDecayProduct) || part.testFlag(GenParticle::kIsPromptTauDecayProduct) || 
 	          part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
 		  (part.parent.isValid() && abs(part.parent->pdgid) == 15)) gt->looseGenLep4PdgId = 2;
 	  else if(part.testFlag(GenParticle::kIsPrompt) || part.statusFlags == GenParticle::kIsPrompt) gt->looseGenLep4PdgId = 1;
+	  else gt->looseGenLep4PdgId = 3;
 	  if(part.pdgid != gt->looseLep4PdgId) gt->looseGenLep4PdgId = -1 * gt->looseGenLep4PdgId;
 	}
       }
