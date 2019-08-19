@@ -189,12 +189,14 @@ namespace pa {
   };
 
   enum PhoSelectionBit {
-   pMedium  =(1<<0),
-   pTight   =(1<<1),
-   pHighPt  =(1<<2),
-   pCsafeVeto =(1<<3),
-   pPixelVeto =(1<<4),
-   pTrkVeto   =(1<<5)
+   pMedium     =(1<<0),
+   pTight      =(1<<1),
+   pHighPt     =(1<<2),
+   pCsafeVeto  =(1<<3),
+   pPixelVeto  =(1<<4),
+   pTrkVeto    =(1<<5),
+   pMediumRun2 =(1<<6),
+   pMediumNM1  =(1<<7)
   };
 
   enum TriggerBits {

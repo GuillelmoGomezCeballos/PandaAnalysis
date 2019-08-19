@@ -62,6 +62,7 @@ PandaAnalyzer::PandaAnalyzer(Analysis* a, int debug_/*=0*/) :
   ADDOP(TriggerEffOp);
   ADDOP(GenStudyEWKOp);
   ADDOP(QCDUncOp);
+  ADDOP(SignalGenOp);
   ADDOP(GenLepOp);
   ADDOP(GenJetNuOp);
   ADDOP(HFCountingOp);
@@ -92,12 +93,12 @@ PandaAnalyzer::PandaAnalyzer(Analysis* a, int debug_/*=0*/) :
 
   TTree* tW = static_cast<TTree*>(fIn->Get("weights"));
   if (tW && analysis.processType == kSignal) {
-    if (tW->GetEntries()!=377 && tW->GetEntries()!=22) {
+    /*if (tW->GetEntries()!=377 && tW->GetEntries()!=22) {
       logger.error("PandaAnalyzer::PandaAnalyzer",
           TString::Format("Reweighting failed because only found %u weights!",
                           unsigned(tW->GetEntries())));
       throw runtime_error("");
-    }
+    }*/
     TString *id = new TString();
     tW->SetBranchAddress("id",&id);
     unsigned nW = tW->GetEntriesFast();
