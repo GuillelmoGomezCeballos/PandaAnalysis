@@ -419,6 +419,28 @@ void GenStudyEWKOp::do_execute()
       gt.sf_vhDown = 1.0;
     }
   }
+  else {
+    if     (nWBosons >= 1 && nZBosons >= 1) {
+      gt.genBosonMass = (wBosons+zBosons).M();
+      gt.genBosonEta  = (wBosons+zBosons).Eta();
+      gt.genBosonPt   = (wBosons+zBosons).Pt();
+    }
+    else if(nWBosons >= 2) {
+      gt.genBosonMass = wBosons.M();
+      gt.genBosonEta  = wBosons.Eta();
+      gt.genBosonPt   = wBosons.Pt();
+    }
+    else if(nZBosons >= 2) {
+      gt.genBosonMass = zBosons.M();
+      gt.genBosonEta  = zBosons.Eta();
+      gt.genBosonPt   = zBosons.Pt();
+    }
+    else {
+      gt.genBosonMass = 0;
+      gt.genBosonEta  = 0;
+      gt.genBosonPt   = 0;
+    }
+  }
 }
 
 void QCDUncOp::do_execute()
@@ -574,13 +596,6 @@ void KFactorOp::do_toppt()
 
 void KFactorOp::do_vpt()
 {
-    if (analysis.processType != kZ && 
-        analysis.processType != kZEWK &&
-        analysis.processType != kW &&
-        analysis.processType != kWEWK && 
-        analysis.processType != kA && 
-        analysis.processType != kVV)
-      return;
 
     // calculate the mjj 
     TLorentzVector vGenJet;

@@ -556,6 +556,8 @@ def wrapper(fn, pre_fn=None, post_fn=None):
         cleanup('*.lock')
         print_time('create lock')
     else:
-        exit(-1*ret)
+        print_time('failure: %d'%(ret))
+        exit(-1)
+        #exit(-1*ret)
 
     exit(0)
