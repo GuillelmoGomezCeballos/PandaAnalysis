@@ -1,6 +1,7 @@
-
 d = {
     'test'                          : ['Diboson_ww'],
+    'WWjj_SS_lttt'                  : ['WWjj_SS_lttt_Summer16'],
+    'WWjj_SS_long'                  : ['WWjj_SS_long_Summer16'],
     'WWjj_SS_dim8_ewk'              : ['WWjj_SS_dim8_ewk_Summer16'],
     'WZjj_dim8_ewk'                 : ['WZjj_dim8_ewk_Summer16'],
     'ZZJJ'                          : ['ZZJJTo4L_QCD_13TeV-madgraph-pythia8',

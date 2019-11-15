@@ -1,7 +1,9 @@
 d = {
     'test'                          : ['Diboson_ww'],
-    'WWjj_SS_dim8_ewk'              : ['WWjj_SS_dim8_ewk'],
-    'WZjj_dim8_ewk'                 : ['WZjj_dim8_ewk'],
+    'WWjj_SS_lttt'                  : ['WWjj_SS_lttt_Autumn18'],
+    'WWjj_SS_long'                  : ['WWjj_SS_long_Autumn18'],
+    'WWjj_SS_dim8_ewk'              : ['WWjj_SS_dim8_ewk_Autumn18'],
+    'WZjj_dim8_ewk'                 : ['WZjj_dim8_ewk_Autumn18'],
     'WWinc'                         : ['WW_TuneCP5_13TeV-pythia8'],
     'WZinc'                         : ['WZ_TuneCP5_13TeV-pythia8'],
     'ZZinc'                         : ['ZZ_TuneCP5_13TeV-pythia8'],
