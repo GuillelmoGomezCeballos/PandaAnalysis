@@ -104,6 +104,7 @@ d = {
     'qqZH600inv'                    : ['ZH_ZToMM_HToInvisible_M600_13TeV_powheg_pythia8','ZH_ZToEE_HToInvisible_M600_13TeV_powheg_pythia8'],
     'qqZH800inv'                    : ['ZH_ZToMM_HToInvisible_M800_13TeV_powheg_pythia8','ZH_ZToEE_HToInvisible_M800_13TeV_powheg_pythia8'],
     'qqZH1000inv'                   : ['ZH_ZToMM_HToInvisible_M1000_13TeV_powheg_pythia8','ZH_ZToEE_HToInvisible_M1000_13TeV_powheg_pythia8'],
+    'WpWp_EWK_QCD'                  : ['WpWpJJ_EWK-QCD_TuneCUETP8M1_13TeV-madgraph-pythia8'],
     'WpWp_EWK'                      : ['WpWpJJ_EWK_TuneCUETP8M1_13TeV-madgraph-pythia8'],
     'WpWp_QCD'                      : ['WpWpJJ_QCD_TuneCUETP8M1_13TeV-madgraph-pythia8'],
     'Unpart_ZToLL_SU-0_dU-1p01'     : ['Unpart_ZToLL_SU-0_dU-1p01'],
