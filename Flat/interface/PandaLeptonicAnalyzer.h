@@ -127,6 +127,8 @@ private:
 	cMediumElectronId,
 	cTightElectronId,
 	cTrackingElectron,
+	cSSWWEWKCorr,
+	cWZEWKCorr,
 	cWWEWKCorr,
 	cWWQCDCorr,
 	cWWQCDSUpCorr,
@@ -173,7 +175,8 @@ private:
     const int nBinPtRap2 = 34;
     const int nBinPtRap3 = 34;
     const int nBinPtRap4 = 34;
-    const int nBinWWSS = 5;
+    const int nBinSSWWMJJ = 4;
+    const int nBinSSWWMLL = 4;
     const int nBinWWMLL = 13;
     const int nBinWWDPHILL = 9;
     const int nBinWWPTL1 = 14;
@@ -261,7 +264,11 @@ private:
     TH1D *hDDilPtRap3EE; TH1D *hDDilPtRap3EE_PDF; TH1D *hDDilPtRap3EE_QCD; TH1D *hDDilPtRap3EE_QCDPart[6];
     TH1D *hDDilPtRap4MM; TH1D *hDDilPtRap4MM_PDF; TH1D *hDDilPtRap4MM_QCD; TH1D *hDDilPtRap4MM_QCDPart[6];
     TH1D *hDDilPtRap4EE; TH1D *hDDilPtRap4EE_PDF; TH1D *hDDilPtRap4EE_QCD; TH1D *hDDilPtRap4EE_QCDPart[6];
-    TH1D *hDWWSSMLL;
+    TH1D *hDSSWWTotal;
+    TH1D *hDSSWWMJJ;     TH1D *hDSSWWMJJ_PDF;     TH1D *hDSSWWMJJ_QCD;     TH1D *hDSSWWMJJ_QCDPart[6];
+    TH1D *hDSSWWMLL;     TH1D *hDSSWWMLL_PDF;     TH1D *hDSSWWMLL_QCD;     TH1D *hDSSWWMLL_QCDPart[6];
+    TH1D *hDWZTotal;
+    TH1D *hDWZMJJ;       TH1D *hDWZMJJ_PDF;       TH1D *hDWZMJJ_QCD;       TH1D *hDWZMJJ_QCDPart[6];
     TH1D *hDWWEWKNorm;
     TH1D *hDWWQCDNorm[5];
     TH1D *hDWWMLL;       TH1D *hDWWMLL_PDF;	  TH1D *hDWWMLL_QCD;	   TH1D *hDWWMLL_QCDPart[6];   TH1D *hDWWMLL_NNLO;	TH1D *hDWWMLL_NNLOPart[4];
