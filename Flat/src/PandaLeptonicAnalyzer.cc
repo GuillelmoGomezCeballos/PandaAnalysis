@@ -2826,6 +2826,10 @@ void PandaLeptonicAnalyzer::Run() {
 	    part.testFlag(GenParticle::kIsDirectTauDecayProduct) || part.testFlag(GenParticle::kIsDirectPromptTauDecayProduct) ||
 	    (part.parent.isValid() && abs(part.parent->pdgid) == 15)) thePdgId = 15 * part.pdgid/abs(part.pdgid);
 	if     (dressedLepton.Pt() > gt->genLep1Pt){
+          TLorentzVector genlep;
+          genlep.SetPtEtaPhiM(gt->genLep2Pt, gt->genLep2Eta, gt->genLep2Phi, 0.0);
+	  genlep3 = genlep;
+          genLep3PdgId = gt->genLep2PdgId; 
           gt->genLep2Pt    = gt->genLep1Pt; 
           gt->genLep2Eta   = gt->genLep1Eta;
           gt->genLep2Phi   = gt->genLep1Phi;
@@ -2836,6 +2840,10 @@ void PandaLeptonicAnalyzer::Run() {
           gt->genLep1PdgId = thePdgId;
         }
 	else if(dressedLepton.Pt() > gt->genLep2Pt){
+          TLorentzVector genlep;
+          genlep.SetPtEtaPhiM(gt->genLep2Pt, gt->genLep2Eta, gt->genLep2Phi, 0.0);
+	  genlep3 = genlep;
+          genLep3PdgId = gt->genLep2PdgId; 
           gt->genLep2Pt    = dressedLepton.Pt();
           gt->genLep2Eta   = dressedLepton.Eta();
           gt->genLep2Phi   = dressedLepton.Phi();
