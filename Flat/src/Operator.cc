@@ -82,7 +82,7 @@ ConfigOp::ConfigOp(Analysis& a_, GeneralTree& gt_, int DEBUG_) :
 
 void ConfigOp::set_inputBranches()
 {
-  bl.setVerbosity(0);
+  bl.setVerbosity(3);
   TString jetname = analysis.puppiJets ? "puppi" : "chs";
   
 
@@ -90,7 +90,7 @@ void ConfigOp::set_inputBranches()
     bl += {"genParticlesU"};
   } else {
     bl += {"runNumber", "lumiNumber", "eventNumber", "rho",
-           "isData", "npv", "npvTrue", "weight", "chsAK4Jets",
+           "isData", "npv", "npvTrue", "weight", "chsAK4Jets", "puppiAK4Jets",
            "electrons", "muons", "taus", "photons",
            "pfMet", "caloMet", "puppiMet", "rawMet", "trkMet",
            "recoil","metFilters","trkMet"};
