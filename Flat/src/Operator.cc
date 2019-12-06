@@ -82,7 +82,7 @@ ConfigOp::ConfigOp(Analysis& a_, GeneralTree& gt_, int DEBUG_) :
 
 void ConfigOp::set_inputBranches()
 {
-  bl.setVerbosity(3);
+  bl.setVerbosity(0);
   TString jetname = analysis.puppiJets ? "puppi" : "chs";
   
 
