@@ -90,7 +90,7 @@ void ConfigOp::set_inputBranches()
     bl += {"genParticlesU"};
   } else {
     bl += {"runNumber", "lumiNumber", "eventNumber", "rho",
-           "isData", "npv", "npvTrue", "weight", "chsAK4Jets", "puppiAK4Jets",
+           "isData", "npv", "npvTrue", "weight", "chsAK4Jets",
            "electrons", "muons", "taus", "photons",
            "pfMet", "caloMet", "puppiMet", "rawMet", "trkMet",
            "recoil","metFilters","trkMet"};

@@ -210,6 +210,7 @@ vv = lambda v=False : _analysis(
         jetFlavorPartons = False,
         jetFlavorJets = True,
         mcTriggers = True,
+        puppiJets = False,
         vbf = True,
     )
 
@@ -238,5 +239,6 @@ vv2016 = lambda v=False : _analysis(
         jetFlavorPartons = False,
         jetFlavorJets = True,
         mcTriggers = True,
+        puppiJets = False,
         vbf = True,
     )
