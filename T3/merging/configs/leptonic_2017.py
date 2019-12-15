@@ -6,6 +6,8 @@ d = {
     'WZjj_dim8_ewk'                 : ['WZjj_dim8_ewk_Fall17'],
     'WZinc'                         : ['WZ_TuneCP5_13TeV-pythia8'],
     'ZZinc'                         : ['ZZ_TuneCP5_13TeV-pythia8'],
+    'ZZJJ'                          : ['ZZJJTo4L_QCD_TuneCP5_13TeV-madgraph-pythia8',
+                                       'ZZJJTo4L_EWK_TuneCP5_13TeV-madgraph-pythia8'],
     'qqZZ'                          : ['ZZTo2L2Nu_13TeV_powheg_pythia8',
                                        'ZZTo2L2Q_13TeV_amcatnloFXFX_madspin_pythia8',
                                        'ZZTo4L_13TeV_powheg_pythia8'],
