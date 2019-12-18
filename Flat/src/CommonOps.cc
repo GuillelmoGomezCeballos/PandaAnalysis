@@ -421,8 +421,31 @@ void GlobalOp::do_execute()
   
   gt.filter_maxRecoil = event.recoil.max;
 
+  double ADDSpecialWeight = 1.0;
+  double ADDMass = 0;
+  if     (analysis.add1Weight) ADDMass = 1000;
+  else if(analysis.add2Weight) ADDMass = 2000;
+  else if(analysis.add3Weight) ADDMass = 3000;
+  if(ADDMass > 0){
+    TLorentzVector evtShat(0,0,0,0); double evtPtHatMin = 100000;
+    int nGen = event.genParticles.size();
+    for (int iG=0; iG!=nGen; ++iG) {
+      auto& part = event.genParticles.at(iG);
+      int pdgid = part.pdgid;
+      unsigned int abspdgid = abs(pdgid);
+      if(part.testFlag(GenParticle::kIsHardProcess) && part.pt() > 0.01 &&
+         !(abspdgid >= 11 && abspdgid <= 16)) {
+         TLorentzVector theParticle;
+         theParticle.SetPtEtaPhiM(part.pt(),part.eta(),part.phi(),part.m());
+         evtShat = evtShat + theParticle;
+         if(evtPtHatMin > part.pt()) evtPtHatMin = part.pt();
+      }
+    }
+    if(evtShat.E() > ADDMass) ADDSpecialWeight = TMath::Power(ADDMass/evtShat.E(),4);
+  } // if ADDMass > 0
+
   // event info
-  gt.mcWeight = event.weight;
+  gt.mcWeight = event.weight*ADDSpecialWeight;
   gt.runNumber = event.runNumber;
   gt.lumiNumber = event.lumiNumber;
   gt.eventNumber = event.eventNumber;

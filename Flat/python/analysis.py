@@ -212,6 +212,9 @@ vv = lambda v=False : _analysis(
         mcTriggers = True,
         puppiJets = False,
         vbf = True,
+        add1Weight = False,
+        add2Weight = False,
+        add3Weight = False
     )
 
 vv2016 = lambda v=False : _analysis(
@@ -241,4 +244,7 @@ vv2016 = lambda v=False : _analysis(
         mcTriggers = True,
         puppiJets = False,
         vbf = True,
+        add1Weight = False,
+        add2Weight = False,
+        add3Weight = False
     )

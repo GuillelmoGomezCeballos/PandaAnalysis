@@ -101,6 +101,9 @@ namespace pa {
     bool vbfhbb = false; 
     bool vqqhbb = false; 
     bool zllhbb = false; 
+    bool add1Weight = false;
+    bool add2Weight = false;
+    bool add3Weight = false;
   };
 
   enum CorrectionType { //!< enum listing relevant corrections applied to MC
