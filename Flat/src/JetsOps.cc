@@ -22,7 +22,12 @@ JetWrapper BaseJetOp::shiftJet(const Jet& jet, shiftjes shift, bool smear)
   if (smear) {
     if (recalcJER) {
       double smearFac=1, smearFacUp=1, smearFacDown=1;
-      jer->getStochasticSmear(pt,jet.eta(),event.rho,smearFac,smearFacUp,smearFacDown);
+      if (jet.matchedGenJet.isValid()){
+	jer->getStochasticSmear(pt,jet.eta(),event.rho,smearFac,smearFacUp,smearFacDown,1,jet.matchedGenJet->pt(), analysis.year);
+      }
+      else {
+	jer->getStochasticSmear(pt,jet.eta(),event.rho,smearFac,smearFacUp,smearFacDown,0,-99, analysis.year);
+      }
       pt *= smearFac;
     } else {
       pt = jet.ptSmear;
@@ -51,7 +56,7 @@ void BaseJetOp::do_readData(TString dirPath)
 
   if (recalcJER) {
     jer.reset(new JERReader(dirPath+"/jec/"+jerV+"/"+jerV+"_MC_SF_"+jetType+".txt",
-                            dirPath+"/jec/"+jerV+"/"+jerV+"_MC_PtResolution_"+jetType+".txt"));
+                            dirPath+"/jec/"+jerV+"/"+jerV+"_MC_PtResolution_"+jetType+".txt", analysis.year));
   }
 
   if (!analysis.rerunJES)
@@ -105,6 +110,7 @@ void JetOp::setupJES()
 {
   if (!analysis.rerunJES || (scaleUnc != nullptr))
     return;
+
   if (analysis.isData) {
     TString thisEra = utils.eras->getEra(gt.runNumber);
     for (auto& iter : scaleUncs) {
@@ -128,9 +134,15 @@ void JetOp::varyJES()
   JESLOOP {
     auto& jets = (*jesShifts)[shift];
     jets.reserve(ak4Jets->size());
+    
+    std::vector<JetWrapper> all_presorted;
+    all_presorted.reserve(ak4Jets->size());
     for (auto &j : *ak4Jets) {
-      jets.all.push_back(shiftJet(j, i2jes(shift), analysis.hbb && !analysis.isData));
+      all_presorted.push_back(shiftJet(j, i2jes(shift), analysis.hbb && !analysis.isData));
     }
+    std::sort(all_presorted.begin(), all_presorted.end(),
+	      [](const JetWrapper x, const JetWrapper y) { return x.pt > y.pt; });
+    jets.all = all_presorted;
   }
   for (size_t iJ = 0; iJ != (*jesShifts)[0].all.size(); ++iJ) {
     auto* nominal = &((*jesShifts)[0].all[iJ]);
@@ -151,7 +163,7 @@ void JetOp::do_execute()
 
   varyJES();
 
-  float maxJetEta = analysis.vbf ? 4.7 : 4.5;
+  float maxJetEta = analysis.vbf ? 4.7 : 4.7;
   int nJetDPhi = analysis.vbf ? 4 : 5;
   float minMinJetPt = min(cfg.minJetPt, cfg.minBJetPt);
 
