@@ -4,6 +4,8 @@ d = {
     'WWjj_SS_long'                  : ['WWjj_SS_long_Summer16'],
     'WWjj_SS_dim8_ewk'              : ['WWjj_SS_dim8_ewk_Summer16'],
     'WZjj_dim8_ewk'                 : ['WZjj_dim8_ewk_Summer16'],
+    'WWjj_SS_dim8_ewk_ext'          : ['WWjj_SS_dim8_ewk_ext_Summer16'],
+    'WZjj_dim8_ewk_ext'             : ['WZjj_dim8_ewk_ext_Summer16'],
     'ZZJJQCD'                       : ['ZZJJTo4L_QCD_13TeV-madgraph-pythia8'],
     'ZZJJEWK'                       : ['ZZJJTo4L_EWK_13TeV-madgraph-pythia8'],
     'qqZZ'                          : ['ZZTo2L2Nu_13TeV_powheg_pythia8',

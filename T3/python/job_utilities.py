@@ -396,7 +396,7 @@ def record_inputs(outfilename, processed):
 # classify a sample based on its name
 def classify_sample(full_path, isData):
     _classification = [
-                (root.pa.kSignal , ['Vector_', 'Scalar_','dim8_ewk']), 
+                (root.pa.kSignal , ['Vector_', 'Scalar_','dim8', 'WWjj_SS']),
                 (root.pa.kTop    , ['ST_', 'ZprimeToTT']), 
                 (root.pa.kZEWK   , 'EWKZ2Jets'), 
                 (root.pa.kWEWK   , 'EWKW'), 
