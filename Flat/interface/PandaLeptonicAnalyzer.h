@@ -127,7 +127,8 @@ private:
 	cMediumElectronId,
 	cTightElectronId,
 	cTrackingElectron,
-	cSSWWEWKCorr,
+	cSSWWMJJEWKCorr,
+	cSSWWMLLEWKCorr,
 	cWZEWKCorr,
 	cWWEWKCorr,
 	cWWQCDCorr,
@@ -175,8 +176,9 @@ private:
     const int nBinPtRap2 = 34;
     const int nBinPtRap3 = 34;
     const int nBinPtRap4 = 34;
-    const int nBinSSWWMJJ = 4;
-    const int nBinSSWWMLL = 4;
+    const int nBinVBSMJJ = 4;
+    const int nBinVBSMLL = 4;
+    const int nBinVBSPTL1 = 4;
     const int nBinWWMLL = 13;
     const int nBinWWDPHILL = 9;
     const int nBinWWPTL1 = 14;
@@ -266,9 +268,12 @@ private:
     TH1D *hDDilPtRap4EE; TH1D *hDDilPtRap4EE_PDF; TH1D *hDDilPtRap4EE_QCD; TH1D *hDDilPtRap4EE_QCDPart[6];
     TH1D *hDSSWWMJJ;     TH1D *hDSSWWMJJ_PDF;     TH1D *hDSSWWMJJ_QCD;     TH1D *hDSSWWMJJ_QCDPart[6];
     TH1D *hDSSWWMLL;     TH1D *hDSSWWMLL_PDF;     TH1D *hDSSWWMLL_QCD;     TH1D *hDSSWWMLL_QCDPart[6];
+    TH1D *hDSSWWPTL1;     TH1D *hDSSWWPTL1_PDF;     TH1D *hDSSWWPTL1_QCD;     TH1D *hDSSWWPTL1_QCDPart[6];
     TH1D *hDNoEWKCorrSSWWMJJ;     TH1D *hDNoEWKCorrSSWWMJJ_PDF;     TH1D *hDNoEWKCorrSSWWMJJ_QCD;     TH1D *hDNoEWKCorrSSWWMJJ_QCDPart[6];
     TH1D *hDNoEWKCorrSSWWMLL;     TH1D *hDNoEWKCorrSSWWMLL_PDF;     TH1D *hDNoEWKCorrSSWWMLL_QCD;     TH1D *hDNoEWKCorrSSWWMLL_QCDPart[6];
-    TH1D *hDWZMJJ;       TH1D *hDWZMJJ_PDF;       TH1D *hDWZMJJ_QCD;       TH1D *hDWZMJJ_QCDPart[6];
+    TH1D *hDNoEWKCorrSSWWPTL1;     TH1D *hDNoEWKCorrSSWWPTL1_PDF;     TH1D *hDNoEWKCorrSSWWPTL1_QCD;     TH1D *hDNoEWKCorrSSWWPTL1_QCDPart[6];
+    TH1D *hDWZMJJ;          TH1D *hDWZMJJ_PDF;          TH1D *hDWZMJJ_QCD;          TH1D *hDWZMJJ_QCDPart[6];
+    TH1D *hDNoEWKCorrWZMJJ; TH1D *hDNoEWKCorrWZMJJ_PDF; TH1D *hDNoEWKCorrWZMJJ_QCD; TH1D *hDNoEWKCorrWZMJJ_QCDPart[6];
     TH1D *hDWWEWKNorm;
     TH1D *hDWWQCDNorm[5];
     TH1D *hDWWMLL;       TH1D *hDWWMLL_PDF;	  TH1D *hDWWMLL_QCD;	   TH1D *hDWWMLL_QCDPart[6];   TH1D *hDWWMLL_NNLO;	TH1D *hDWWMLL_NNLOPart[4];
