@@ -6,6 +6,8 @@ d = {
     'WZjj_dim8_ewk'                 : ['WZjj_dim8_ewk_Autumn18'],
     'WWjj_SS_dim8_ewk_ext'          : ['WWjj_SS_dim8_ewk_ext_Autumn18'],
     'WZjj_dim8_ewk_ext'             : ['WZjj_dim8_ewk_ext_Autumn18'],
+    'WWjj_SS_interference'          : ['WWjj_SS_interference_Autumn18'],
+    'WZJJ_interference'             : ['WZJJ_interference_Autumn18'],
     'WWinc'                         : ['WW_TuneCP5_13TeV-pythia8'],
     'WZinc'                         : ['WZ_TuneCP5_13TeV-pythia8'],
     'ZZinc'                         : ['ZZ_TuneCP5_13TeV-pythia8'],

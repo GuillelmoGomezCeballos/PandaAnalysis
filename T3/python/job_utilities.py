@@ -396,7 +396,7 @@ def record_inputs(outfilename, processed):
 # classify a sample based on its name
 def classify_sample(full_path, isData):
     _classification = [
-                (root.pa.kSignal , ['Vector_', 'Scalar_','dim8', 'WWjj_SS']),
+                (root.pa.kSignal , ['Vector_', 'Scalar_','dim8']),
                 (root.pa.kTop    , ['ST_', 'ZprimeToTT']), 
                 (root.pa.kZEWK   , 'EWKZ2Jets'), 
                 (root.pa.kWEWK   , 'EWKW'), 
@@ -405,7 +405,7 @@ def classify_sample(full_path, isData):
                 (root.pa.kA      , 'GJets'), 
                 (root.pa.kTT     , ['TTJets', 'TT_', 'TTTo']), 
                 (root.pa.kH      , ['HTo', 'ZH']),
-                (root.pa.kVV     , ['WW', 'WZ', 'ZZ', 'WpWp', 'WLLJJ']),
+                (root.pa.kVV     , ['WW', 'WZ', 'ZZ', 'WpWp', 'WLLJJ', 'WZjj', 'WWjj_SS']),
             ]
     if not isData:
         for e, pattern in _classification:
