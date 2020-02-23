@@ -131,6 +131,7 @@ d = {
     'WpWp_EWK_QCD'                  : ['WpWpJJ_EWK-QCD_TuneCP5_13TeV-madgraph-pythia8'],
     'WpWp_EWK'                      : ['WpWpJJ_EWK_TuneCP5_13TeV-madgraph-pythia8'],
     'WpWp_QCD'                      : ['WpWpJJ_QCD_TuneCP5_13TeV-madgraph-pythia8'],
+    'WpWp_EWK_powheg'               : ['WpWpJJ_EWK_TuneCP5_13TeV-powheg-pythia8'],
     'Unpart_ZToLL_SU-0_dU-1p01'     : ['Unpart_ZToLL_SU-0_dU-1p01'],
     'Unpart_ZToLL_SU-0_dU-1p02'     : ['Unpart_ZToLL_SU-0_dU-1p02'],
     'Unpart_ZToLL_SU-0_dU-1p04'     : ['Unpart_ZToLL_SU-0_dU-1p04'],
