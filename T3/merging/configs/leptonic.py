@@ -1,5 +1,8 @@
 d = {
     'test'                          : ['Diboson_ww'],
+    'WWjj_SS_long_wwframe'  	    : ['WWjj_SS_long_wwframe_Summer16'],
+    'WWjj_SS_lt_wwframe'	    : ['WWjj_SS_lt_wwframe_Summer16'],
+    'WWjj_SS_tt_wwframe'	    : ['WWjj_SS_tt_wwframe_Summer16'],
     'WWjj_SS_long_new'  	    : ['WWjj_SS_long_new_Summer16'],
     'WWjj_SS_lt_new'		    : ['WWjj_SS_lt_new_Summer16'],
     'WWjj_SS_tt_new'		    : ['WWjj_SS_tt_new_Summer16'],
