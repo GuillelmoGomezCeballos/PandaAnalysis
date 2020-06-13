@@ -250,7 +250,7 @@ private:
     TH1D *hDDilHighPtMM; TH1D *hDDilHighPtMM_PDF; TH1D *hDDilHighPtMM_QCD; TH1D *hDDilHighPtMM_QCDPart[6];
     TH1D *hDDilHighPtEE; TH1D *hDDilHighPtEE_PDF; TH1D *hDDilHighPtEE_QCD; TH1D *hDDilHighPtEE_QCDPart[6];
     TH1D *hDDilHighPtNN; TH1D *hDDilHighPtNN_PDF; TH1D *hDDilHighPtNN_QCD; TH1D *hDDilHighPtNN_QCDPart[6];
-    TH1D *hDExtHighPtNN; TH1D *hDExtHighPtNN_PDF; TH1D *hDExtHighPtNN_QCD; TH1D *hDExtHighPtNN_QCDPart[6];
+    TH1D *hDFidHighPtNN; TH1D *hDFidHighPtNN_PDF; TH1D *hDFidHighPtNN_QCD; TH1D *hDFidHighPtNN_QCDPart[6];
     TH1D *hDDilHighPtNoEWKMM;
     TH1D *hDDilHighPtNoEWKEE;
     TH1D *hDDilHighPtNoEWKNN;
