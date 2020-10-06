@@ -5,6 +5,20 @@ from sys import argv,exit
 from os import system,getenv,path
 from time import clock,time
 import json
+import sys
+import imp
+print "XXXXXXXXXXXXXXX"
+print '\n'.join(sys.path)
+print "XXXXXXXXXXXXXXX"
+
+local_path = ['/home/ceballos/.local/lib/python2.7/site-packages/']
+def _get_module(name):
+    found = imp.find_module(name,local_path)
+    return imp.load_module(name,*found)
+urllib3 = _get_module('urllib3')
+idna = _get_module('idna')
+requests = _get_module('requests')
+
 
 which = int(argv[1])
 submit_id = int(argv[2])
